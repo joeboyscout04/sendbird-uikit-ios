@@ -40,6 +40,11 @@ public protocol SBUGroupChannelModuleListDelegate: SBUBaseChannelModuleListDeleg
     ///    - user: The`SBUUser` object from the tapped mention.
     func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didTapMentionUser user: SBUUser)
     
+    /// Called when tapped a url in the cell.
+    /// - Parameters:
+    ///    - user: The`SBUUser` object from the tapped mention.
+    func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didTapURL url: URL)
+    
     /// Called when tapped the thread info in the cell
     /// - Parameter threadInfoView: The `SBUThreadInfoView` object from the tapped thread info.
     /// - Since: 3.3.0
@@ -833,6 +838,11 @@ extension SBUGroupChannelModule {
                     shouldHandleUncachedTemplateImages: cacheData,
                     messageCell: messageCell
                 )
+            }
+            
+            messageCell.urlTapHandler = { [weak self] url in
+                guard let self = self else { return }
+                self.delegate?.groupChannelModule(self, didTapURL: url)
             }
             
             messageCell.errorHandler = { [weak self] error in

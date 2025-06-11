@@ -58,6 +58,11 @@ class ChannelVC_CustomList: SBUGroupChannelViewController {
         }
     }
     
+    override func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didTapURL url: URL) {
+        self.alert(methodName: "\(#function)") {
+            super.groupChannelModule(listComponent, didTapURL: url)
+        }
+    }
     
     override func baseChannelModule(_ listComponent: SBUBaseChannelModule.List, didTapVoiceMessage fileMessage: FileMessage, cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.alert(methodName: "\(#function)") {

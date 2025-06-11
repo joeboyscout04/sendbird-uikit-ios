@@ -349,7 +349,7 @@ open class SBUUserMessageCell: SBUContentBaseMessageCell, SBUUserMessageTextView
             return
         }
         
-        url.open()
+        self.urlTapHandler?(url)
     }
     
     // MARK: - Suggested Reply
@@ -450,10 +450,15 @@ open class SBUUserMessageCell: SBUContentBaseMessageCell, SBUUserMessageTextView
     @available(*, deprecated, message: "`updateMessageTemplate` has been deprecated since 3.27.2.")
     public func updateMessageTemplate() { }
     
-    // MARK: - Mention
+    // MARK: - Mention and URL tap handlers
     /// As a default, it calls `groupChannelModule(_:didTapMentionUser:)` in ``SBUGroupChannelModuleListDelegate``.
     open func userMessageTextView(_ textView: SBUUserMessageTextView, didTapMention user: SBUUser) {
         self.mentionTapHandler?(user)
+    }
+    
+    /// As a default, it calls `groupChannelModule(_:didTapURL:)` in ``SBUGroupChannelModuleListDelegate``.
+    open func userMessageTextView(_ textView: SBUUserMessageTextView, didTapURL url: URL) {
+        self.urlTapHandler?(url)
     }
 
     // MARK: - Suggested reply delegate

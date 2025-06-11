@@ -1002,6 +1002,10 @@ open class SBUGroupChannelViewController: SBUBaseChannelViewController, SBUGroup
         self.showUserProfile(user: user)
     }
     
+    open func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didTapURL url: URL) {
+        url.open()
+    }
+    
     open func groupChannelModuleDidTapThreadInfoView(_ threadInfoView: SBUThreadInfoView) {
         guard let message = threadInfoView.message,
               let channelURL = self.channel?.channelURL else { return }

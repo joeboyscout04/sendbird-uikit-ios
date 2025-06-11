@@ -72,6 +72,7 @@ open class SBUBaseMessageCell: SBUTableViewCell, SBUMessageCellProtocol, SBUFeed
     var emojiLongPressHandler: ((_ emojiKey: String) -> Void)?
     var mentionTapHandler: ((_ user: SBUUser) -> Void)?
     var errorHandler: ((_ error: SBError) -> Void)?
+    var urlTapHandler: ((_ url: URL) -> Void)?
     
     /// The action of ``SBUSuggestedReplyView`` that is called when a ``SBUSuggestedReplyOptionView`` is selected.
     /// - Parameter selectedOptionView: The selected ``SBUSuggestedReplyOptionView`` object.
